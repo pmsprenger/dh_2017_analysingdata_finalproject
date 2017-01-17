@@ -1,26 +1,35 @@
-#!/usr/local/lib/python
+#!/usr/local/lib/python3.5
 
-from __future__ import division
-import sys
+# please change the interpreter if necessary
+# the location of a mac interpreter is always different than the one on a windows
+
 import csv
 import nltk
-import matplotlib
-import numpy 
-import pylab
-import scipy
-import string
+# i removed all things that we did not need yet
 
-reload(sys)
-sys.setdefaultencoding("utf-8")
 
-mypath = "../data/"
-myfile = mypath + "trainset-sentiment-extra.csv"
+def gender_lists(data):
+    """
+        This function returns two lists: one list with the tokens from females, and one with the tokens from males
+    """
+    token_list_female = []
+    token_list_male = []
+    for row in data:
+        if 'male' == row['gender-cat']:
+            token_list_male += nltk.word_tokenize(row['text-cat'])
+        if 'female' == row['gender-cat']:
+            token_list_female += nltk.word_tokenize(row['text-cat'])
+    return token_list_female, token_list_male
 
-file = open(myfile)
-reader = csv.DictReader(file)
 
-token_list = []
-for row in reader:
-	if "male" in row['gender-cat']:
-		token_list += nltk.word_tokenize(row['text-cat'])
-print token_list
+def main():
+    # open the file (sys.reload is totally unneccesary)
+    file = open('trainset-sentiment-extra.csv', encoding='utf-8')
+    reader = csv.DictReader(file)
+
+    list1, list2 = gender_lists(reader)
+    print('-------- MALE ------')
+    print(list1[0:50]) # only print the first 50 characters
+    print('---------- FEMALE-----')
+    print(list2[0:50]) # only print the first 50 characters
+main()
