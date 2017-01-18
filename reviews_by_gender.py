@@ -1,4 +1,4 @@
-#!/usr/local/lib/python3.5
+#!/usr/local/lib/python2.7
 
 # please change the interpreter if necessary
 # the location of a mac interpreter is always different than the one on a windows
@@ -24,12 +24,13 @@ def gender_lists(data):
 
 def main():
     # open the file (sys.reload is totally unneccesary)
-    file = open('trainset-sentiment-extra.csv', encoding='utf-8')
+    file = open('trainset-sentiment-extra.csv')
+	sys.setdefaultencoding("utf-8")
     reader = csv.DictReader(file)
 
     list1, list2 = gender_lists(reader)
-    print('-------- MALE ------')
-    print(list1[0:50]) # only print the first 50 characters
-    print('---------- FEMALE-----')
-    print(list2[0:50]) # only print the first 50 characters
+    print '-------- MALE ------'
+    print list1[0:50] # only print the first 50 characters
+    print '---------- FEMALE-----'
+    print list2[0:50] # only print the first 50 characters
 main()
