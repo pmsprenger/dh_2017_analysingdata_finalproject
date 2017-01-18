@@ -30,10 +30,10 @@ def labels_descriptives(labels):
             pos_labels.append(label)
         if label == 'neg':
             neg_labels.append(label)
-    print("-------------- LABELS ---------------------------------------")
-    print("The number of positive labels is {0}".format(len(pos_labels)))
-    print("The number of negative labels is {0}".format(len(neg_labels)))
-    print('--------------------------------------------------------------')
+    print "-------------- LABELS ---------------------------------------"
+    print "The number of positive labels is {0}".format(len(pos_labels))
+    print(The number of negative labels is {0}.format(len(neg_labels)))
+    print(--------------------------------------------------------------)
 
 
 def corpus_description(tokens):
@@ -56,7 +56,7 @@ def corpus_description(tokens):
 
 def main():
     # open the file, in this case trainset-sentiment
-    data = open("trainset-sentiment.csv", 'r')
+    data = open("../data/trainset-sentiment.csv", 'r')
     reader = csv.DictReader(data)
     # unlabel the data
     labels, tokens = unstructured_text(reader)
@@ -79,7 +79,3 @@ main()
 # possible question 4: correlation between punctuation and label?
 # we can use that answer to prove our model
 # ----------------------------------------------------------------------------------------
-
-
-
-

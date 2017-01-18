@@ -12,7 +12,7 @@ def stats(values):
 	"""
 	# Calculate the sample size:
 	print "The sample size is: " + str(len(values))
-	
+
 	# Calculate the mean:
 	print "The mean is: " + str(numpy.mean(values))
 
@@ -29,7 +29,7 @@ def stats(values):
 	# Calculate the maximum value:
 	maximum = max(values)
 	print "The maximum value is: " + str(maximum)
-	
+
 	# Calculate the mode:
 	print "The mode is: " + str(max(set(values), key=values.count))
 
@@ -55,7 +55,7 @@ def review_length_extractor(data):
 				list_of_lengths_positive.append(int(string_length))
 			if "neg" in row['label']:
 				list_of_lengths_negative.append(int(string_length))
-			if "male" in row['gender-cat']:
+			if "male" == row['gender-cat']:
 				list_of_lengths_male.append(int(string_length))
 			if "female" in row['gender-cat']:
 				list_of_lengths_female.append(int(string_length))
@@ -63,7 +63,7 @@ def review_length_extractor(data):
 				list_of_lengths_morning.append(int(string_length))
 			if "evening" in row['time-cat']:
 				list_of_lengths_evening.append(int(string_length))
-	# Oof! What a lot of values to return to the main()! Still, it is more neast to do this in one function, as otherwise the same dataset
+	# Oof! What a lot of values to return to the main()! Still, it is more neat to do this in one function, as otherwise the same dataset
 	# has to be looped over several times. This way, it is more efficient, as long as I keep track of which list gets returned where.
 	return list_of_lengths_total, list_of_lengths_positive, list_of_lengths_negative, list_of_lengths_male,list_of_lengths_female, list_of_lengths_morning, list_of_lengths_evening
 
@@ -74,7 +74,7 @@ def main():
 	sys.setdefaultencoding("utf-8")
 	reader = csv.DictReader(file)
 
-	# I chose for rather generic list names, as their function is self-evident from the print fucntion in the line immediately before 
+	# I chose for rather generic list names, as their function is self-evident from the print fucntion in the line immediately before
 	# it is being used for processing.
 	list1, list2, list3, list4, list5, list6, list7 = review_length_extractor(reader)
 	print "Please find below the descriptive statistics for the lengths of all the reviews:"

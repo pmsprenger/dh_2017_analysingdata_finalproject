@@ -41,7 +41,7 @@ def corpus_description(tokens):
 	freqdist_1.plot(20)
 	# plot a frequency graph without stopwords
 	stopwords = nltk.corpus.stopwords.words('english')
-	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#", 
+	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#",
 	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``"]
 	stopwords_and_punctuation = stopwords + punctuation
 	# add tokens to list if they are not in the stopwords provided by nltk
@@ -52,7 +52,7 @@ def corpus_description(tokens):
 
 def bigrams_extractor(text):
 	stopwords = nltk.corpus.stopwords.words('english')
-	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#", 
+	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#",
 	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``"]
 	stopwords_and_punctuation = stopwords + punctuation
 	tokens = [item for item in text if item.lower() not in stopwords_and_punctuation]
@@ -63,7 +63,7 @@ def bigrams_extractor(text):
 	#scored = finder.score_ngrams(bigram_measures.chi_sq)
 	#sorted = (finder.nbest(bigram_measures.chi_sq, 20))
 	print sorted
-	
+
 def main():
 	# open the file
 	reload(sys)
@@ -81,7 +81,7 @@ def main():
 	print '---------- FEMALE-----'
 	print "There are", count2, "reviews that have been written by females."
 	corpus_description(list2)
-	print "These are the 20 most prevalent reviews that have been written by females:"
+	print "These are the 20 most prevalent bigrams in the reviews that have been written by females:"
 	bigrams_extractor(list2)
 	file.close()
 if __name__ == "__main__":

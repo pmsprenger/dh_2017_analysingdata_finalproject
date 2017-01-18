@@ -25,7 +25,7 @@ def gender_lists(data):
 def main():
     # open the file (sys.reload is totally unneccesary)
     file = open('trainset-sentiment-extra.csv')
-	sys.setdefaultencoding("utf-8")
+    sys.setdefaultencoding("utf-8")
     reader = csv.DictReader(file)
 
     list1, list2 = gender_lists(reader)

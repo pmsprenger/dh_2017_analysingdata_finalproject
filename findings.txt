@@ -1,0 +1,51 @@
+Findings of data_description_length.py:
+
+#########
+Please find below the descriptive statistics for the lengths of all the reviews:
+The sample size is: 6000
+The mean is: 152.088833333
+The median is: 100.0
+The standard deviation is: 191.500043365
+The mininum value is: 1
+The maximum value is: 5350
+The mode is: 38
+
+Please find below the descriptive statistics for the lengths of those reviews that were positive:
+The sample size is: 2968
+The mean is: 152.466644205
+The median is: 96.0
+The standard deviation is: 215.466899399
+The mininum value is: 1
+The maximum value is: 5350
+The mode is: 47
+
+Please find below the descriptive statistics for the lengths of those reviews that were negative:
+The sample size is: 3032
+The mean is: 151.718997361
+The median is: 105.0
+The standard deviation is: 164.694126205
+The mininum value is: 8
+The maximum value is: 2644
+The mode is: 62
+##########
+
+Findings from data_description_label.py
+
+##########
+-------- POSITIVE ------
+There are 2968 reviews that have been reviewed as positives.
+The corpus size is 454814
+The vocabulary size is 26327
+The lexical density is 0.057885201423
+These are the 20 most prevalent bigrams of the positive reviews:
+[('ca', "n't"), ('easy', 'use'), ('highly', 'recommend'), ('one', 'best'), ('wo', "n't"), ('could', "n't"), ('years', 'ago'), ("n't", 'know'), ('much', 'better'), ('would', "n't"), ('would', 'recommend'), ("n't", 'like'), ("'s", 'great'), ("n't", 'get'), ('digital', 'camera'), ('long', 'time'), ("n't", 'think'), ('first', 'time'), ('highly', 'recommended'), ('even', 'though')]
+
+
+---------- NEGATIVE -----
+There are 3032 reviews that have been reviewed as negatives.
+The corpus size is 462815
+The vocabulary size is 25266
+The lexical density is 0.0545920076056
+These are the 20 most prevalent bigrams of the negative reviews:
+[('ca', "n't"), ('wo', "n't"), ("n't", 'even'), ('could', "n't"), ('would', "n't"), ('much', 'better'), ("n't", 'know'), ('waste', 'money'), ("n't", 'work'), ('customer', 'service'), ('even', 'though'), ("n't", 'get'), ('waste', 'time'), ('talk', 'talk'), ('sounds', 'like'), ('read', 'book'), ("'m", 'sure'), ('first', 'time'), ("n't", 'really'), ("n't", 'waste')]
+##########
