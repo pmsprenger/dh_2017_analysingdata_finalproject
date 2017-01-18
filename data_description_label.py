@@ -37,23 +37,27 @@ def corpus_description(tokens):
 	print("The vocabulary size is {0}".format(len(set(tokens))))
 	print("The lexical density is {0}".format(len(set(tokens))/len(tokens)))
 	# plot a frequency graph with stopwords
-	freqdist_1 = nltk.FreqDist(tokens)
-	freqdist_1.plot(20)
+	#freqdist_1 = nltk.FreqDist(tokens)
+	#freqdist_1.plot(20)
 	# plot a frequency graph without stopwords
 	stopwords = nltk.corpus.stopwords.words('english')
 	#punctuation = ",.<>;:?[]{}-_+=!@#$%^&*()~`"
-	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#", 
-	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``"]
+	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#",
+	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``", "/", "'"]
 	stopwords_and_punctuation = stopwords + punctuation
 	# add tokens to list if they are not in the stopwords provided by nltk
 	new_tokens = [item for item in tokens if item.lower() not in stopwords_and_punctuation]
 	# stopwords and punctuation from the histogram
 	freqdist_2 = nltk.FreqDist(new_tokens)
-	freqdist_2.plot(20)
+
+	# TALITA: INSERT FUNCTION TO SELECT ONLY ADJECTIVES/NOUNS.
+
+	print(freqdist_2.most_common(50))
+	#.plot(20)
 
 def bigrams_extractor(text):
 	stopwords = nltk.corpus.stopwords.words('english')
-	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#", 
+	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#",
 	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``"]
 	stopwords_and_punctuation = stopwords + punctuation
 	tokens = [item for item in text if item.lower() not in stopwords_and_punctuation]
@@ -64,7 +68,7 @@ def bigrams_extractor(text):
 	#scored = finder.score_ngrams(bigram_measures.chi_sq)
 	#sorted = (finder.nbest(bigram_measures.chi_sq, 20))
 	print sorted
-	
+
 def main():
 	# open the file
 	reload(sys)
