@@ -22,6 +22,7 @@ def label_lists(data):
 			# If the review was written by a man, put it in a separate list and add one extra to the positive-review count.
 			token_list_positive += nltk.word_tokenize(row['text-cat'])
 			reviews_count_positive += 1
+			review_length = 0
 		if 'neg' == row['label']:
 			# If the review was written by a woman, put it in a separate list and add one extra to the negative-review count.
 			token_list_negative += nltk.word_tokenize(row['text-cat'])
@@ -36,12 +37,7 @@ def corpus_description(tokens):
 	print("The corpus size is {0}".format(len(tokens)))
 	print("The vocabulary size is {0}".format(len(set(tokens))))
 	print("The lexical density is {0}".format(len(set(tokens))/len(tokens)))
-	# plot a frequency graph with stopwords
-	#freqdist_1 = nltk.FreqDist(tokens)
-	#freqdist_1.plot(20)
-	# plot a frequency graph without stopwords
 	stopwords = nltk.corpus.stopwords.words('english')
-	#punctuation = ",.<>;:?[]{}-_+=!@#$%^&*()~`"
 	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#",
 	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``", "/", "'"]
 	stopwords_and_punctuation = stopwords + punctuation
@@ -49,11 +45,8 @@ def corpus_description(tokens):
 	new_tokens = [item for item in tokens if item.lower() not in stopwords_and_punctuation]
 	# stopwords and punctuation from the histogram
 	freqdist_2 = nltk.FreqDist(new_tokens)
-
-	# TALITA: INSERT FUNCTION TO SELECT ONLY ADJECTIVES/NOUNS.
-
-	print(freqdist_2.most_common(50))
-	#.plot(20)
+	print "These are the 50 most frequently occurring words of this corpus (minus punctuation and stopwords):"
+	print freqdist_2.most_common(50)
 
 
 def bigrams_extractor(text):
@@ -66,8 +59,6 @@ def bigrams_extractor(text):
 	finder = BigramCollocationFinder.from_words(tokens)
 	scored = finder.score_ngrams(bigram_measures.raw_freq)
 	sorted = (finder.nbest(bigram_measures.raw_freq, 20))
-	#scored = finder.score_ngrams(bigram_measures.chi_sq)
-	#sorted = (finder.nbest(bigram_measures.chi_sq, 20))
 	print sorted
 
 
@@ -78,29 +69,26 @@ def part_of_speech(pos, neg):
 
 
 def main():
-    reload(sys)
-    file = open('trainset-sentiment-extra.csv')
-    sys.setdefaultencoding("utf-8")
-    reader = csv.DictReader(file)
-    count1, count2, list1, list2 = label_lists(reader)
-    tag_neg, tag_pos =  part_of_speech(list1, list2)
-    print tag_neg[0:20]
+	reload(sys)
+	file = open('trainset-sentiment-extra.csv')
+	sys.setdefaultencoding("utf-8")
+	reader = csv.DictReader(file)
+	count1, count2, list1, list2 = label_lists(reader)
+	print '-------- POSITIVE ------'
+	print "There are", count1, "reviews that have been reviewed as positives."
+	corpus_description(list1)
+	print "These are the 20 most prevalent bigrams of the positive reviews:"
+	bigrams_extractor(list1)
+	print '---------- NEGATIVE -----'
+	print "There are", count2, "reviews that have been reviewed as negatives."
+	corpus_description(list2)
+	print "These are the 20 most prevalent bigrams of the negative reviews:"
+	bigrams_extractor(list2)
+    #tag_neg, tag_pos =  part_of_speech(list1, list2)
+    #print tag_neg[0:20]
+	file.close()
 
 main()
-
-
-	#print '-------- POSITIVE ------'
-	#print "There are", count1, "reviews that have been reviewed as positives."
-	#corpus_description(list1)
-	#print "These are the 20 most prevalent bigrams of the positive reviews:"
-	#bigrams_extractor(list1)
-	#print '---------- NEGATIVE -----'
-	#print "There are", count2, "reviews that have been reviewed as negatives."
-	#corpus_description(list2)
-	#print "These are the 20 most prevalent bigrams of the negative reviews:"
-	#bigrams_extractor(list2)
-    #print "----------- POS------------------"
-	#file.close()
 
 if __name__ == "__main__":
     main()
