@@ -24,9 +24,9 @@ def corpus_description(tokens):
 	"""
 		Input is a list of tokens retrieved from unstructured_text. Output contains corpus analysis + frequency plot
 	"""
-	print("The corpus size is {0}".format(len(tokens)))
-	print("The vocabulary size is {0}".format(len(set(tokens))))
-	print("The lexical density is {0}".format(len(set(tokens))/len(tokens)))
+	print "The corpus size is {0}".format(len(tokens)))
+	print "The vocabulary size is {0}".format(len(set(tokens))))
+	print "The lexical density is {0}".format(len(set(tokens))/len(tokens)))
 	# plot a frequency graph with stopwords
 	freqdist_1 = nltk.FreqDist(tokens)
 	freqdist_1.plot(20)

@@ -1,0 +1,15 @@
+Descriptives:
+- Frequencies
+- Collocations
+- Part of Speech Tagging:
+It takes too much time to do part-of-speech tagging. The files are too big. Therefore, I used pickle files. I created
+two pickle files: one with all the positive label texts and one with all the negative label texts. It's important to use
+this because we only need to create these files once and then we can use them for anything we want. Pickle files are
+different then just normal files, I'm not sure how it works but it sterilises a file. Anyway, it's really faster than
+normal files.
+- I looked at: verbs, nouns and adjectives. Please have a look at the POSTAGS.txt file to understand all the
+abbrevations / tags. I looked at all types of nouns and all types of verbs. Yet, they are not very informative
+
+Inferential:
+Prediction:
+

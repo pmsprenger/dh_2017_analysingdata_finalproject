@@ -55,6 +55,7 @@ def corpus_description(tokens):
 	print(freqdist_2.most_common(50))
 	#.plot(20)
 
+
 def bigrams_extractor(text):
 	stopwords = nltk.corpus.stopwords.words('english')
 	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#",
@@ -69,25 +70,37 @@ def bigrams_extractor(text):
 	#sorted = (finder.nbest(bigram_measures.chi_sq, 20))
 	print sorted
 
-def main():
-	# open the file
-	reload(sys)
-	# Apparently we have decided to store the csv-files in the same folder/directory as the source code.
-	file = open('trainset-sentiment-extra.csv')
-	sys.setdefaultencoding("utf-8")
-	reader = csv.DictReader(file)
 
-	count1, count2, list1, list2, = label_lists(reader) # Extract the raw data sorted by label by means of calling the function label_lists().
-	print '-------- POSITIVE ------'
-	print "There are", count1, "reviews that have been reviewed as positives."
-	corpus_description(list1)
-	print "These are the 20 most prevalent bigrams of the positive reviews:"
-	bigrams_extractor(list1)
-	print '---------- NEGATIVE -----'
-	print "There are", count2, "reviews that have been reviewed as negatives."
-	corpus_description(list2)
-	print "These are the 20 most prevalent bigrams of the negative reviews:"
-	bigrams_extractor(list2)
-	file.close()
+def part_of_speech(pos, neg):
+    tagged_pos = nltk.pos_tag(pos)
+    #tagged_neg = nltk.pos_tag(neg)
+    return tagged_pos
+
+
+def main():
+    reload(sys)
+    file = open('trainset-sentiment-extra.csv')
+    sys.setdefaultencoding("utf-8")
+    reader = csv.DictReader(file)
+    count1, count2, list1, list2 = label_lists(reader)
+    tag_neg, tag_pos =  part_of_speech(list1, list2)
+    print tag_neg[0:20]
+
+main()
+
+
+	#print '-------- POSITIVE ------'
+	#print "There are", count1, "reviews that have been reviewed as positives."
+	#corpus_description(list1)
+	#print "These are the 20 most prevalent bigrams of the positive reviews:"
+	#bigrams_extractor(list1)
+	#print '---------- NEGATIVE -----'
+	#print "There are", count2, "reviews that have been reviewed as negatives."
+	#corpus_description(list2)
+	#print "These are the 20 most prevalent bigrams of the negative reviews:"
+	#bigrams_extractor(list2)
+    #print "----------- POS------------------"
+	#file.close()
+
 if __name__ == "__main__":
     main()

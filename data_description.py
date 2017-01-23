@@ -32,8 +32,8 @@ def labels_descriptives(labels):
             neg_labels.append(label)
     print "-------------- LABELS ---------------------------------------"
     print "The number of positive labels is {0}".format(len(pos_labels))
-    print(The number of negative labels is {0}.format(len(neg_labels)))
-    print(--------------------------------------------------------------)
+    print "The number of negative labels is {0}.format(len(neg_labels))"
+    print "--------------------------------------------------------------"
 
 
 def corpus_description(tokens):

@@ -1,5 +1,3 @@
-#!/usr/local/lib/python2.7
-
 from __future__ import division
 import csv
 import nltk
@@ -16,7 +14,7 @@ def gender_lists(data):
 	reviews_count_male = 0
 	token_list_female = []
 	token_list_male = []
-	# Loop over each row of text in the csv-file.
+	# Loop over each row of text in the csv-file.co
 	for row in data:
 		if 'male' == row['gender-cat']:
 			# If the review was written by a man, put it in a separate list and add one extra to the male-review count.
@@ -84,5 +82,6 @@ def main():
 	print "These are the 20 most prevalent bigrams in the reviews that have been written by females:"
 	bigrams_extractor(list2)
 	file.close()
+
 if __name__ == "__main__":
     main()
