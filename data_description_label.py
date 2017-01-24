@@ -50,6 +50,10 @@ def corpus_description(tokens):
 
 
 def bigrams_extractor(text):
+	"""
+		With this function, we are going to extract the 50 most frequent bigrams from the dataset, but without 
+		punctuation or stopwords, in order to get as many relevant results as possible and to remove all noise.
+	"""
 	stopwords = nltk.corpus.stopwords.words('english')
 	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#",
 	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``"]
@@ -58,11 +62,16 @@ def bigrams_extractor(text):
 	bigram_measures = nltk.collocations.BigramAssocMeasures()
 	finder = BigramCollocationFinder.from_words(tokens)
 	scored = finder.score_ngrams(bigram_measures.raw_freq)
-	sorted = (finder.nbest(bigram_measures.raw_freq, 20))
+	sorted = (finder.nbest(bigram_measures.raw_freq, 50))
 	print sorted
 
 
 def part_of_speech(pos, neg):
+	"""
+		We will also be making wordlists from the cdataset distrubuted per word class, in which we will focus in particular
+		on semantically relevant wordclasses such as verbs, nouns and adjectives, in order to see whether we can find if some words 
+		occur more often for one kind of reviews than another.
+	"""
     tagged_pos = nltk.pos_tag(pos)
     #tagged_neg = nltk.pos_tag(neg)
     return tagged_pos
@@ -70,25 +79,23 @@ def part_of_speech(pos, neg):
 
 def main():
 	reload(sys)
-	file = open('trainset-sentiment-extra.csv')
+	file = open('trainset-sentiment.csv')
 	sys.setdefaultencoding("utf-8")
 	reader = csv.DictReader(file)
 	count1, count2, list1, list2 = label_lists(reader)
 	print '-------- POSITIVE ------'
 	print "There are", count1, "reviews that have been reviewed as positives."
 	corpus_description(list1)
-	print "These are the 20 most prevalent bigrams of the positive reviews:"
+	print "These are the 50 most prevalent bigrams of the positive reviews:"
 	bigrams_extractor(list1)
 	print '---------- NEGATIVE -----'
 	print "There are", count2, "reviews that have been reviewed as negatives."
 	corpus_description(list2)
-	print "These are the 20 most prevalent bigrams of the negative reviews:"
+	print "These are the 50 most prevalent bigrams of the negative reviews:"
 	bigrams_extractor(list2)
     #tag_neg, tag_pos =  part_of_speech(list1, list2)
     #print tag_neg[0:20]
 	file.close()
-
-main()
 
 if __name__ == "__main__":
     main()
