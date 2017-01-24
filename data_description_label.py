@@ -78,6 +78,7 @@ def part_of_speech(pos, neg):
 
 
 def main():
+
 	reload(sys)
 	file = open('trainset-sentiment.csv')
 	sys.setdefaultencoding("utf-8")
