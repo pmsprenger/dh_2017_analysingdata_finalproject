@@ -51,7 +51,7 @@ def corpus_description(tokens):
 
 def bigrams_extractor(text):
 	"""
-		With this function, we are going to extract the 50 most frequent bigrams from the dataset, but without 
+		With this function, we are going to extract the 50 most frequent bigrams from the dataset, but without
 		punctuation or stopwords, in order to get as many relevant results as possible and to remove all noise.
 	"""
 	stopwords = nltk.corpus.stopwords.words('english')
@@ -69,12 +69,12 @@ def bigrams_extractor(text):
 def part_of_speech(pos, neg):
 	"""
 		We will also be making wordlists from the cdataset distrubuted per word class, in which we will focus in particular
-		on semantically relevant wordclasses such as verbs, nouns and adjectives, in order to see whether we can find if some words 
+		on semantically relevant wordclasses such as verbs, nouns and adjectives, in order to see whether we can find if some words
 		occur more often for one kind of reviews than another.
 	"""
-    tagged_pos = nltk.pos_tag(pos)
+	tagged_pos = nltk.pos_tag(pos)
     #tagged_neg = nltk.pos_tag(neg)
-    return tagged_pos
+	return tagged_pos
 
 
 def main():
