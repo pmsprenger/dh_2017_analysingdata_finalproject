@@ -33,7 +33,7 @@ def corpus_description(tokens):
 	# plot a frequency graph without stopwords
 	stopwords = nltk.corpus.stopwords.words('english')
 	#punctuation = ",.<>;:?[]{}-_+=!@#$%^&*()~`"
-	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#", 
+	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#",
 	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``"]
 	stopwords_and_punctuation = stopwords + punctuation
 	# add tokens to list if they are not in the stopwords provided by nltk
@@ -44,23 +44,23 @@ def corpus_description(tokens):
 
 def bigrams_extractor(text):
 	stopwords = nltk.corpus.stopwords.words('english')
-	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#", 
+	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#",
 	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``"]
 	stopwords_and_punctuation = stopwords + punctuation
 	tokens = [item for item in text if item.lower() not in stopwords_and_punctuation]
 	bigram_measures = nltk.collocations.BigramAssocMeasures()
 	finder = BigramCollocationFinder.from_words(tokens)
 	scored = finder.score_ngrams(bigram_measures.raw_freq)
-	sorted = (finder.nbest(bigram_measures.raw_freq, 20))
+	sorted = (finder.nbest(bigram_measures.raw_freq, 50))
 	#scored = finder.score_ngrams(bigram_measures.chi_sq)
 	#sorted = (finder.nbest(bigram_measures.chi_sq, 20))
 	print sorted
-	
+
 def main():
 	# open the file
 	reload(sys)
 	# Apparently we have decided to store the csv-files in the same folder/directory as the source code.
-	file = open('trainset-sentiment-extra.csv')
+	file = open('trainset-sentiment.csv')
 	sys.setdefaultencoding("utf-8")
 	reader = csv.DictReader(file)
 
@@ -68,7 +68,7 @@ def main():
 	print '-------- OVERALL CORPUS ANALYTICS ------'
 	print "There are", count1, "reviews that have been written in total."
 	corpus_description(list1)
-	print "These are the 20 most prevalent bigrams of the whole reviews dataset:"
+	print "These are the 50 most prevalent bigrams of the whole reviews dataset:"
 	bigrams_extractor(list1)
 	file.close()
 if __name__ == "__main__":
