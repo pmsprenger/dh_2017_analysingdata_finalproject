@@ -60,7 +60,7 @@ def main():
 	# open the file
 	reload(sys)
 	# Apparently we have decided to store the csv-files in the same folder/directory as the source code.
-	file = open('trainset-sentiment.csv')
+	file = open('../data/trainset-sentiment.csv')
 	sys.setdefaultencoding("utf-8")
 	reader = csv.DictReader(file)
 

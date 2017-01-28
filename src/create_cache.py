@@ -7,7 +7,7 @@ import csv
 def main():
         # open the file
     reload(sys)
-    file = open('trainset-sentiment-extra.csv')
+    file = open('../data/trainset-sentiment-extra.csv')
     sys.setdefaultencoding("utf-8")
 
     # make a dictionary
