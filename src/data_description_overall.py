@@ -34,7 +34,7 @@ def corpus_description(tokens):
 	stopwords = nltk.corpus.stopwords.words('english')
 	#punctuation = ",.<>;:?[]{}-_+=!@#$%^&*()~`"
 	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#",
-	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``"]
+	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``", "'"]
 	stopwords_and_punctuation = stopwords + punctuation
 	# add tokens to list if they are not in the stopwords provided by nltk
 	new_tokens = [item for item in tokens if item.lower() not in stopwords_and_punctuation]
@@ -45,7 +45,7 @@ def corpus_description(tokens):
 def bigrams_extractor(text):
 	stopwords = nltk.corpus.stopwords.words('english')
 	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#",
-	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``"]
+	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``", "'"]
 	stopwords_and_punctuation = stopwords + punctuation
 	tokens = [item for item in text if item.lower() not in stopwords_and_punctuation]
 	bigram_measures = nltk.collocations.BigramAssocMeasures()
