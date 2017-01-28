@@ -51,8 +51,8 @@ def main():
     sys.setdefaultencoding("utf-8")
     reader = csv.DictReader(file)
 
-    positive_file = open('../output/pos_bigrams.txt')
-    negative_file = open('../output/neg_bigrams.txt')
+    positive_file = open('../output/pos-150-bigrams.txt')
+    negative_file = open('../output/neg-150-bigrams.txt')
 
     list1 = make_list(positive_file)
     list2 = make_list(negative_file)
