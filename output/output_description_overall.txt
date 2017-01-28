@@ -1,0 +1,6 @@
+There are 6000 reviews that have been written in total.
+The corpus size is 917629
+The vocabulary size is 38337
+The lexical density is 0.041778322176
+These are the 50 most prevalent bigrams of the whole reviews dataset:
+[('ca', "n't"), ('wo', "n't"), ('could', "n't"), ('would', "n't"), ("n't", 'know'), ('much', 'better'), ("n't", 'even'), ('easy', 'use'), ('one', 'best'), ("n't", 'get'), ('even', 'though'), ("n't", 'work'), ('years', 'ago'), ('highly', 'recommend'), ('would', 'recommend'), ('read', 'book'), ('first', 'time'), ('waste', 'money'), ("n't", 'like'), ("'m", 'sure'), ('customer', 'service'), ("n't", 'think'), ('digital', 'camera'), ("n't", 'really'), ('long', 'time'), ("n't", 'want'), ('looks', 'like'), ("'ve", 'ever'), ('cd', "'s"), ('year', 'old'), ("'s", 'great'), ('picture', 'quality'), ('sounds', 'like'), ('let', "'s"), ('waste', 'time'), ('pretty', 'much'), ('1', '/'), ('make', 'sure'), ('thought', 'would'), ("'ve", 'used'), ('5', 'stars'), ("n't", 'buy'), ('talk', 'talk'), ('windows', 'xp'), ("'s", 'good'), ('book', "'s"), ('one', "'s"), ("'ve", 'seen'), ("'s", 'really'), ('every', 'time')]
