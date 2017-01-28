@@ -62,7 +62,7 @@ def bigrams_extractor(text):
 	bigram_measures = nltk.collocations.BigramAssocMeasures()
 	finder = BigramCollocationFinder.from_words(tokens)
 	scored = finder.score_ngrams(bigram_measures.raw_freq)
-	sorted = (finder.nbest(bigram_measures.raw_freq, 50))
+	sorted = (finder.nbest(bigram_measures.raw_freq, 150))
 	print sorted
 
 
@@ -87,12 +87,12 @@ def main():
 	print '-------- POSITIVE ------'
 	print "There are", count1, "reviews that have been reviewed as positives."
 	corpus_description(list1)
-	print "These are the 50 most prevalent bigrams of the positive reviews:"
+	print "These are the 150 most prevalent bigrams of the positive reviews:"
 	bigrams_extractor(list1)
 	print '---------- NEGATIVE -----'
 	print "There are", count2, "reviews that have been reviewed as negatives."
 	corpus_description(list2)
-	print "These are the 50 most prevalent bigrams of the negative reviews:"
+	print "These are the 150 most prevalent bigrams of the negative reviews:"
 	bigrams_extractor(list2)
     #tag_neg, tag_pos =  part_of_speech(list1, list2)
     #print tag_neg[0:20]
