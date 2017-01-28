@@ -12,7 +12,7 @@ def stats(values):
 	"""
 	# Calculate the sample size:
 	print "The sample size is: " + str(len(values))
-	
+
 	# Calculate the mean:
 	print "The mean is: " + str(numpy.mean(values))
 
@@ -29,7 +29,7 @@ def stats(values):
 	# Calculate the maximum value:
 	maximum = max(values)
 	print "The maximum value is: " + str(maximum)
-	
+
 	# Calculate the mode:
 	print "The mode is: " + str(max(set(values), key=values.count))
 
@@ -58,11 +58,11 @@ def review_length_extractor(data):
 def main():
 	# open the file
 	reload(sys)
-	file = open('trainset-sentiment-extra.csv')
+	file = open('../data/trainset-sentiment-extra.csv')
 	sys.setdefaultencoding("utf-8")
 	reader = csv.DictReader(file)
 
-	# I chose for rather generic list names, as their function is self-evident from the print fucntion in the line immediately before 
+	# I chose for rather generic list names, as their function is self-evident from the print fucntion in the line immediately before
 	# it is being used for processing.
 	list1, list2, list3 = review_length_extractor(reader)
 	print "Please find below the descriptive statistics for the lengths of all the reviews:"

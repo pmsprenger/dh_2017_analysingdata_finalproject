@@ -80,7 +80,7 @@ def part_of_speech(pos, neg):
 def main():
 
 	reload(sys)
-	file = open('trainset-sentiment.csv')
+	file = open('../data/trainset-sentiment.csv')
 	sys.setdefaultencoding("utf-8")
 	reader = csv.DictReader(file)
 	count1, count2, list1, list2 = label_lists(reader)

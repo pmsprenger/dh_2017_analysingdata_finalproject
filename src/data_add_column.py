@@ -47,19 +47,19 @@ def intersection(sentiment_list, sentence_bigrams):
 def main():
     # open all the files
     reload(sys)
-    file = open('trainset-sentiment-test.csv')
+    file = open('../data/trainset-sentiment-test.csv')
     sys.setdefaultencoding("utf-8")
     reader = csv.DictReader(file)
 
-    positive_file = open('pos_bigrams.txt')
-    negative_file = open('neg_bigrams.txt')
+    positive_file = open('../output/pos_bigrams.txt')
+    negative_file = open('../output/neg_bigrams.txt')
 
     list1 = make_list(positive_file)
     list2 = make_list(negative_file)
     scores = score_text(list1, list2, reader)
 
     headers = ["label","text-cat","pos_score","neg_score"]
-    out_file = open("out.csv", 'w')
+    out_file = open("../output/out.csv", 'w')
     csv_out = csv.DictWriter(f=out_file, fieldnames=headers)
     csv_out.writeheader()
     for score in scores:
@@ -71,5 +71,3 @@ def main():
     out_file.close()
 
 main()
-
-
