@@ -11,7 +11,7 @@ import scipy.stats
 from scipy import stats
 
 reload(sys)
-file = open('../data/DATA_WITH_COUNTS.csv')
+file = open('../data/new_csvfile_with_counts.csv')
 sys.setdefaultencoding("utf-8")
 reader = csv.DictReader(file)
 
@@ -26,11 +26,33 @@ def bigram_counter(reader):
         neg_bigr_count.append(int(neg_row))
     return pos_bigr_count, neg_bigr_count
 
-def ttest(pos_bigr_count, neg_bigr_count):
-    print "\nThis is the ttest for our data:"
-    print scipy.stats.ttest_ind_from_stats(numpy.mean(pos_bigr_count), numpy.std(pos_bigr_count), len(pos_bigr_count), numpy.mean(neg_bigr_count), numpy.std(neg_bigr_count), len(neg_bigr_count))
+def descriptives(name, values):
+    """
+        Returns the descriptive statistics for a list of values
+    """
+    sorted_results = sorted(values)
+    print "--------DESCRIPTIVE STATISTICS FOR" + " " + name + "----------------"
+    print "{0} {1}".format('Mean', numpy.mean(values))
+    print "{0} {1}".format('Median', numpy.median(values))
+    print "{0} {1}".format('SD', numpy.std(values))
+    print "{0} {1}".format('Max', sorted_results[-1])
+    print "{0} {1}".format('Min', sorted_results[0])
 
-counter1, counter2 = bigram_counter(reader)
-ttest(counter1, counter2)
+
+
+def t_test(x, y):
+    result_t_test = stats.ttest_ind(x,y, equal_var=True)
+    print '--------------------'
+    print 'INDEPENDENT T-TEST:'
+    print '------------------'
+    print "t-value = {0}".format(result_t_test[0])
+    print "p-value = {0}".format(result_t_test[1])
+
+
+
+positive_bigrams, negative_bigrams = bigram_counter(reader)
+descriptives("positive bigrams", positive_bigrams)
+descriptives("negative bigrams", negative_bigrams)
+t_test(positive_bigrams, negative_bigrams)
 
 file.close()
