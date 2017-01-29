@@ -20,10 +20,14 @@ def bigram_counter(reader):
     neg_bigr_count = []
 
     for row in reader:
-        pos_row = row['pos_score']
-        pos_bigr_count.append(int(pos_row))
-        neg_row = row['neg_score']
-        neg_bigr_count.append(int(neg_row))
+		pos_row = row['pos_score']
+		if pos_row != None:
+			pos_row = int(pos_row)
+			pos_bigr_count.append(pos_row)
+		neg_row = row['neg_score']
+		if neg_row != None:
+			neg_row = int(neg_row)
+			neg_bigr_count.append(neg_row)
     return pos_bigr_count, neg_bigr_count
 
 def descriptives(name, values):
