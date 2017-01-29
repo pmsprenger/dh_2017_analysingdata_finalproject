@@ -16,32 +16,39 @@ sys.setdefaultencoding("utf-8")
 reader = csv.DictReader(file)
 
 def bigram_counter(reader):
-    pos_bigr_count = []
-    neg_bigr_count = []
-
+    prev_pos_bigr_count = []
+    prev_neg_bigr_count = []
+    nrev_pos_bigr_count = []
+    nrev_neg_bigr_count = []
     for row in reader:
-		pos_row = row['pos_score']
-		if pos_row != None:
-			pos_row = int(pos_row)
-			pos_bigr_count.append(pos_row)
-		neg_row = row['neg_score']
-		if neg_row != None:
-			neg_row = int(neg_row)
-			neg_bigr_count.append(neg_row)
-    return pos_bigr_count, neg_bigr_count
+        if row['label'] == 'pos':
+            pos_row = row['pos_score']
+            if int(pos_row) < 5 and pos_row != None:
+                prev_pos_bigr_count.append(int(pos_row))
+                neg_row = row['neg_score']
+            if int(neg_row) < 5 and pos_row != None:
+                prev_neg_bigr_count.append(int(neg_row))
+        if row['label'] == 'neg':
+            pos_row = row['pos_score']
+            if int(pos_row) < 5 and pos_row != None:
+                nrev_pos_bigr_count.append(int(pos_row))
+                neg_row = row['neg_score']
+            if int(neg_row) < 5 and pos_row != None:
+                nrev_neg_bigr_count.append(int(neg_row))
+    return prev_neg_bigr_count, prev_pos_bigr_count, nrev_neg_bigr_count, nrev_pos_bigr_count
 
 def descriptives(name, values):
     """
         Returns the descriptive statistics for a list of values
     """
     sorted_results = sorted(values)
-    print "--------DESCRIPTIVE STATISTICS FOR" + " " + name + "----------------"
+    print "--------DESCRIPTIVES----", name
+    print "N = {0}".format(len(values))
     print "{0} {1}".format('Mean', numpy.mean(values))
     print "{0} {1}".format('Median', numpy.median(values))
     print "{0} {1}".format('SD', numpy.std(values))
     print "{0} {1}".format('Max', sorted_results[-1])
     print "{0} {1}".format('Min', sorted_results[0])
-
 
 
 def t_test(x, y):
@@ -52,11 +59,24 @@ def t_test(x, y):
     print "t-value = {0}".format(result_t_test[0])
     print "p-value = {0}".format(result_t_test[1])
 
+posneg, pospos, negneg, negpos = bigram_counter(reader)
 
 
-positive_bigrams, negative_bigrams = bigram_counter(reader)
-descriptives("positive bigrams", positive_bigrams)
-descriptives("negative bigrams", negative_bigrams)
-t_test(positive_bigrams, negative_bigrams)
+# positive reviews
+descriptives("negative bigrams in positive reviews", posneg)
+descriptives("positive bigrams in positive reviews", pospos)
+
+#negative reviews
+descriptives("negative bigrams in negative reviews", negneg)
+descriptives("positive bigrams in negative reviews", negpos)
+
+
+print "Positive Bigrams appear more in positive reviews then in negative reviews"
+t_test(pospos, negpos)
+print "Negative bigrams appear more in negative reviews then in positive reviews"
+t_test(negpos, posneg)
+
+
 
 file.close()
+
