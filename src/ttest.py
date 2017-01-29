@@ -21,20 +21,24 @@ def bigram_counter(reader):
     nrev_pos_bigr_count = []
     nrev_neg_bigr_count = []
     for row in reader:
-        if row['label'] == 'pos':
-            pos_row = row['pos_score']
-            if int(pos_row) < 5 and pos_row != None:
-                prev_pos_bigr_count.append(int(pos_row))
-                neg_row = row['neg_score']
-            if int(neg_row) < 5 and pos_row != None:
-                prev_neg_bigr_count.append(int(neg_row))
-        if row['label'] == 'neg':
-            pos_row = row['pos_score']
-            if int(pos_row) < 5 and pos_row != None:
-                nrev_pos_bigr_count.append(int(pos_row))
-                neg_row = row['neg_score']
-            if int(neg_row) < 5 and pos_row != None:
-                nrev_neg_bigr_count.append(int(neg_row))
+		if row['label'] == 'pos':
+			pos_row = row['pos_score']
+			if pos_row != None:
+				if int(pos_row) < 5:
+					prev_pos_bigr_count.append(int(pos_row))
+					neg_row = row['neg_score']
+			if pos_row != None:
+				if int(neg_row) < 5: 
+					prev_neg_bigr_count.append(int(neg_row))
+		if row['label'] == 'neg':
+			pos_row = row['pos_score']
+			if pos_row != None:
+				if int(pos_row) < 5:
+					nrev_pos_bigr_count.append(int(pos_row))
+					neg_row = row['neg_score']
+			if pos_row != None:
+				if int(neg_row) < 5:
+					nrev_neg_bigr_count.append(int(neg_row))
     return prev_neg_bigr_count, prev_pos_bigr_count, nrev_neg_bigr_count, nrev_pos_bigr_count
 
 def descriptives(name, values):
