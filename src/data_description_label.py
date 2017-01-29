@@ -51,7 +51,7 @@ def corpus_description(tokens):
 
 def bigrams_extractor(text):
 	"""
-		With this function, we are going to extract the 50 most frequent bigrams from the dataset, but without
+		With this function, we are going to extract the 150 most frequent bigrams from the dataset, but without
 		punctuation or stopwords, in order to get as many relevant results as possible and to remove all noise.
 	"""
 	stopwords = nltk.corpus.stopwords.words('english')
