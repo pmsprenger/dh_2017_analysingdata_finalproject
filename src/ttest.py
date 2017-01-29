@@ -26,6 +26,19 @@ def bigram_counter(reader):
         neg_bigr_count.append(int(neg_row))
     return pos_bigr_count, neg_bigr_count
 
+def descriptives(name, values):
+    """
+        Returns the descriptive statistics for a list of values
+    """
+    sorted_results = sorted(values)
+    print "--------DESCRIPTIVE STATISTICS FOR" + " " + name + "----------------"
+    print "{0} {1}".format('Mean', numpy.mean(values))
+    print "{0} {1}".format('Median', numpy.median(values))
+    print "{0} {1}".format('SD', numpy.std(values))
+    print "{0} {1}".format('Max', sorted_results[-1])
+    print "{0} {1}".format('Min', sorted_results[0])
+
+
 
 def t_test(x, y):
     result_t_test = stats.ttest_ind(x,y, equal_var=True)
@@ -37,7 +50,9 @@ def t_test(x, y):
 
 
 
-values1, values2 = bigram_counter(reader)
-t_test(values1, values2)
+positive_bigrams, negative_bigrams = bigram_counter(reader)
+descriptives("positive bigrams", positive_bigrams)
+descriptives("negative bigrams", negative_bigrams)
+t_test(positive_bigrams, negative_bigrams)
 
 file.close()
