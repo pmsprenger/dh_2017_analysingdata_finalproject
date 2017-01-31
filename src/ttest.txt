@@ -1,0 +1,40 @@
+--------DESCRIPTIVES---- negative bigrams in positive reviews
+N = 2951
+Mean 0.359878007455
+Median 0.0
+SD 0.768273281235
+Max 4
+Min 0
+--------DESCRIPTIVES---- positive bigrams in positive reviews
+N = 2959
+Mean 0.421764109496
+Median 0.0
+SD 0.700417099543
+Max 4
+Min 0
+--------DESCRIPTIVES---- negative bigrams in negative reviews
+N = 2966
+Mean 0.663519892111
+Median 0.0
+SD 0.969910224542
+Max 4
+Min 0
+--------DESCRIPTIVES---- positive bigrams in negative reviews
+N = 3031
+Mean 0.224678323985
+Median 0.0
+SD 0.530182410847
+Max 4
+Min 0
+Positive Bigrams appear more in positive reviews then in negative reviews
+--------------------
+INDEPENDENT T-TEST:
+------------------
+t-value = 12.2953711795
+p-value = 2.48215500382e-34
+Negative bigrams appear more in negative reviews then in positive reviews
+--------------------
+INDEPENDENT T-TEST:
+------------------
+t-value = -7.93801818728
+p-value = 2.43515236025e-15
