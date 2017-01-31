@@ -11,7 +11,7 @@ import scipy.stats
 from scipy import stats
 
 reload(sys)
-file = open('../data/new_csvfile_with_counts.csv')
+file = open('../data/DATA_WITH_COUNTS.csv')
 sys.setdefaultencoding("utf-8")
 reader = csv.DictReader(file)
 
