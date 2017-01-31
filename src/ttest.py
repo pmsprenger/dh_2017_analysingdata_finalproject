@@ -60,8 +60,6 @@ def t_test(x, y):
     print "p-value = {0}".format(result_t_test[1])
 
 posneg, pospos, negneg, negpos = bigram_counter(reader)
-print negneg
-print len(negneg)
 
 # positive reviews
 descriptives("negative bigrams in positive reviews", posneg)
