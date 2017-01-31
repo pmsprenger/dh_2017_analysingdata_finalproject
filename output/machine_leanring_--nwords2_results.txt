@@ -1,0 +1,32 @@
+reading features...
+one hot encoding...
+n features: 24716
+n train samples: 1568
+Most frequent label:	pos
+Baseline accuracy:	0.508928571429
+
+Results on the train set:
+Accuracy: 0.977678571429 (MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True))
+Confusion matrix
+[[764  19]
+ [ 16 769]]
+             precision    recall  f1-score   support
+
+        neg       0.98      0.98      0.98       783
+        pos       0.98      0.98      0.98       785
+
+avg / total       0.98      0.98      0.98      1568
+
+
+Results on the dev set:
+Accuracy: 0.818452380952 (MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True))
+Confusion matrix
+[[136  29]
+ [ 32 139]]
+             precision    recall  f1-score   support
+
+        neg       0.81      0.82      0.82       165
+        pos       0.83      0.81      0.82       171
+
+avg / total       0.82      0.82      0.82       336
+
