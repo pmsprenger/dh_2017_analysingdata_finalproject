@@ -56,14 +56,15 @@ def bigrams_extractor(text):
 	"""
 	stopwords = nltk.corpus.stopwords.words('english')
 	punctuation = [",", ".", "<", ">", ";", ":", "?", "[", "]", "{", "}" ,"-", "_", "+", "=", "!", "@", "#",
-	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``", "'"]
+	"$", "%", "^", "&", "*", "(", ")", "~", "`", "''", "...", "``", "'", "n't"]
 	stopwords_and_punctuation = stopwords + punctuation
 	tokens = [item for item in text if item.lower() not in stopwords_and_punctuation]
 	bigram_measures = nltk.collocations.BigramAssocMeasures()
 	finder = BigramCollocationFinder.from_words(tokens)
-	scored = finder.score_ngrams(bigram_measures.raw_freq)
-	sorted = (finder.nbest(bigram_measures.raw_freq, 150))
-	print sorted
+	finder.apply_freq_filter(100)
+	sorted = (finder.nbest(bigram_measures.raw_freq, 6000))
+	for item in sorted:
+		print " ".join(item)
 
 
 def main():

@@ -50,8 +50,9 @@ def bigrams_extractor(text):
 	tokens = [item for item in text if item.lower() not in stopwords_and_punctuation]
 	bigram_measures = nltk.collocations.BigramAssocMeasures()
 	finder = BigramCollocationFinder.from_words(tokens)
+	finder.apply_freq_filter(30)
 	scored = finder.score_ngrams(bigram_measures.raw_freq)
-	sorted = (finder.nbest(bigram_measures.raw_freq, 50))
+	sorted = (finder.nbest(bigram_measures.raw_freq, 150))
 	#scored = finder.score_ngrams(bigram_measures.chi_sq)
 	#sorted = (finder.nbest(bigram_measures.chi_sq, 20))
 	print sorted
